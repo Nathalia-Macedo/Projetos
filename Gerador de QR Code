@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerador de QR Code</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <label for="text-input">Texto:</label>
+  <input type="text" id="text-input">
+  <button onclick="gerarQRCode()">Gerar QR Code</button>
+  <br>
+  <div id="qrcode"></div>
+
+  <script>
+    function gerarQRCode() {
+      var inputValor = document.getElementById("text-input").value;
+
+    
+      if (!inputValor) {
+        alert("Digite um texto para gerar o QR Code.");
+        return;
+      }
+
+   
+      var qr = qrcode(0, "L");
+      qr.addData(inputValor);
+      qr.make();
+
+      var qrImage = qr.createImgTag(5, 10);
+
+      // Exibir o QR Code no elemento HTML
+      document.getElementById("qrcode").innerHTML = qrImage;
+    }
+  </script>
+</body>
+</html>
