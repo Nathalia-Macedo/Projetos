@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+       body{
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+        display:flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+       }
+
+       .cadastro{
+        width: 40%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        flex-direction: column;
+        gap:1rem;
+        box-shadow:  2px 1px 3px 5px white,
+        10px 7px 10px black,
+        1px 5px 6px grey;
+       }
+
+       .cadastro input{
+        width: 30%;
+        padding: 0.43rem;
+        border-radius: 5px;
+        border:none;
+       }
+
+       .cadastro label{
+        font-family:"Roboto",sans-serif ;
+        font-size: 20px;
+        color:white;
+        
+       }
+
+       .cadastro button{
+        width: 20%;
+        padding: 0.6rem;
+        border:none;
+        border-radius: 5px;
+        background-color: white;
+       }
+
+       button:active{
+        background-color: grey;
+       }
+
+       p{
+        font-size: 30px;
+        text-decoration: underline;
+       }
+
+       .login{
+        width: 40%;
+        height: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        flex-direction: column;
+        gap:1rem;
+        box-shadow:  2px 1px 3px 5px white,
+        10px 7px 10px black,
+        1px 5px 6px grey;
+       }
+
+       .login input{
+        width: 30%;
+        padding: 0.6rem;
+        border-radius: 5px;
+        border:none;
+       }
+
+       .login label{
+        font-family:"Roboto",sans-serif ;
+        font-size: 25px;
+        
+       }
+
+       .login button{
+        width: 20%;
+        padding: 0.6rem;
+        border:none;
+        border-radius: 5px;
+        background-color: white;
+       }
+
+       button:active{
+        background-color: grey;
+       }
+
+    </style>
+</head>
+<body>
+
+
+    <div class="login">
+        <label for="user"> Usuário: </label>
+        <input id="user" placeholder="Digite o nome de usuario" type="text">
+        <label for="password"> Senha: </label>
+        <input id="password" placeholder="Digite a senha" type="password">
+        <button onclick="login()">Login</button>
+        <button onclick="page_cadastro()">Cadastre-se</button>
+
+
+    </div>
+
+<div class="cadastro">
+
+    <p>Faça seu cadastro</p>
+    <label for="usuario"> Usuario:</label>
+    <input id="usuario" placeholder="Digite nome de usuario" type="text">
+    <label for="senha"> Senha: </label>
+    <input id="senha" placeholder="Digite sua senha: " type="text">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="voltar()">Voltar</button>
+
+
+
+
+
+</div>
+
+    
+<script>
+    
+/*Iniciando a variável funcionários com os dados que já estão no local storage ou então começar com um array vazio*/
+/*O JSON.Parse converte a string para um objeto javascript*/
+
+let funcionarios = JSON.parse(localStorage.getItem("Banco_de_dados")) || [];
+/*Criando a função para cadastrar um novo usuario*/
+function cadastrar() {
+  /*pegando o valor digitado nos inputs usuario e senha*/
+  let usuario = document.getElementById("usuario").value;
+  let senha = document.getElementById("senha").value;
+  /*Criando um funcionário novo com os dados que o usuario digitou e jogando dentro da lista funcionários*/
+  let funcionario_novo = { "usuario": usuario, "senha": senha };
+  funcionarios.push(funcionario_novo);
+  /*Enviando os itens para dentro do local storage*/
+  localStorage.setItem("Banco_de_dados", JSON.stringify(funcionarios));
+  /*Dando um alerta após fazer esse envio*/ 
+  alert("Cadastrado");
+}
+
+
+//Definindo uma função para login
+function login() {
+
+  //Pegando o valor que o usuário digitou
+  let usuario = document.getElementById("user").value;
+  let senha = document.getElementById("password").value;
+
+  let funcionarios_ls = JSON.parse(localStorage.getItem("Banco_de_dados"));
+
+  let loginBemSucedido = false;
+
+  for (let i of funcionarios_ls) {
+    if (usuario === i.usuario && senha === i.senha) {
+      loginBemSucedido = true;
+      break;
+    }
+  }
+
+  if (loginBemSucedido) {
+    alert("Bem-vindo");
+    window.location.href = "http://127.0.0.1:5500/PORTF%C3%93LIO/VisionBet/localstorage/pagina_inicial.html";
+  } else {
+    alert("Usuário não cadastrado");
+  }
+}
+
+function voltar() {
+  let div_login = document.querySelector(".login");
+  div_login.style.display = "flex";
+  let div_cadastro = document.querySelector(".cadastro");
+  div_cadastro.style.display = "none";
+}
+
+function page_cadastro() {
+  let div_login = document.querySelector(".login");
+  div_login.style.display = "none";
+  let div_cadastro = document.querySelector(".cadastro");
+  div_cadastro.style.display = "flex";
+}
+
+window.onload = function () {
+  voltar();
+};
+
+</script>
+</body>
+</html>
