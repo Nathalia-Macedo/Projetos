@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Pegando o id checkbox e mudando o display para none, ele vai desaparecer */
+        #checkbox{
+            display:none
+        }
+        body{
+            background-color: white;
+        }
+
+        .switch{
+            position:relative;/*Como vai ter coisas na frente disso, precisamos dar um position relative*/
+            width: 70px;/*determinando a largura*/
+            height: 70px;/*determinando a altura*/
+            background-color: rgb(99, 99, 99);/*determinando um background*/
+            border-radius: 50%;/* colocando borda em apenas 50% do elemento*/
+            z-index: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;/*organizando os itens verticalmente, de cima para baixo */ 
+            justify-content: center;
+            border: 2px solid rgb(126, 126, 126);/*Colocando uma borda com cor bem parecida*/  
+            box-shadow: 0px 0px 3px rgb(2, 2, 2) inset;/*Colocando uma sombra preta na borda, por dentro do elemento criado*/
+        }
+
+        #checkbox + .powersign{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .powersign{
+            position: relative;
+            width: 30%;
+            height: 30%;
+            border:4px solid rgb(48, 48, 48);/*criando uma borda na div*/
+            border-radius: 50%;/*arrendondando ate se tornar um circulo*/
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /*Criando a estilização dentro da div com classe powersign*/
+        .powersign::before{
+            content: "";
+            width:8px;
+            height: 100%;
+            background-color: rgb(99, 99, 99);
+            position: absolute;
+            top: -60%;
+            z-index: 2
+
+        }
+        /*Criando a estilização de fora da div*/
+        .powersign::after{
+            content: "";
+            width: 4px;
+            height: 100%;
+            background-color:rgb(48, 48, 48);
+            position: absolute;
+            top: -60%;
+            z-index: 3;
+        }
+
+        #checkbox:checked + .switch .powersign{
+            border: 4px solid rgb(255, 255, 255);
+            /*colocando sombra do lado de fora quando clicar*/
+            box-shadow: 0px 0px 5px rgb(151, 243, 255),
+            /*colocando sombra do lado de dentro quando clicar*/
+            0px 0px 5px rgb(151, 243, 255) inset;
+        }
+
+        #checkbox:checked + .switch .powersign::after{
+            background-color: rgb(255,255,255);
+            box-shadow: 0px 0px 5px rgb(151, 243, 255);
+
+        }
+        #checkbox:checked + .switch{
+            box-shadow: 0px 0px 1px rgb(151, 243, 255) inset,
+            0px 0px 2px rgb(151, 243, 255) inset,
+            0px 0px 10px rgb(151, 243, 255) inset,
+            0px 0px 40px rgb(151, 243, 255),
+            0px 0px 100px rgb(151, 243, 255);
+            border: 2px solid rgb(255, 255, 255);
+            background-color: rgb(146, 180, 184);
+        }
+
+     
+
+        
+    #checkbox:checked + .switch .powersign::before {
+    background-color: rgb(146, 180, 184);
+}
+
+    </style>
+</head>
+<body id="corpo">
+    
+        <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="switch">
+        <div class="powersign"></div>
+    </label>
+  
+    
+
+   
+    
+ </body>
+</html>
