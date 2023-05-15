@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* zerando margin e padding padrões*/
+*{
+  margin: 0;
+ padding: 0;
+  box-sizing: border-box;
+}
+/* Criando cor do background*/
+
+.container{
+  width: 1920px;
+  height: 100vh;
+  background: linear-gradient(0, #120c56, #000000);
+}
+
+.stars{
+    position:relative;
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+    box-shadow: 50px 30px white,
+    1000px 800px white,
+    1280px 180px white,
+    1700px 280px white,
+    950px 530px white,
+    700px 850px white,
+    450px 700px white,
+    1520px 100px white,
+    450px 100px white,
+    550px 450px white,
+    665px 100px  white,
+    1098px 690px white,
+    850px 350px white,
+    65px 890px  white,
+    108px 690px white,
+    550px 450px white,
+    650px 550px  white,
+    1098px 690px white,
+    1500px 900px white,
+    1400px 500px white,
+    1600px 1000px white;
+    animation: anim-stars 10s linear infinite
+}
+
+
+
+
+@keyframes anim-stars {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-1050px);
+    }
+}
+
+.stars::after{
+    content: " ";
+    position: absolute;
+    top:1050px;
+    width: 6px;
+	height: 6px;
+	border-radius: 50%;
+    box-shadow: 50px 30px white,
+    1000px 800px white,
+    1280px 180px white,
+    1700px 280px white,
+    250px 530px white,
+    200px 850px white,
+    450px 700px white,
+    1520px 100px white,
+    450px 100px white,
+    550px 450px white,
+    665px 100px  white,
+    1098px 690px white,
+    850px 350px white,
+    65px 890px  white,
+    108px 690px white,
+    550px 450px white,
+    650px 550px  white,
+    1098px 690px white,
+    1500px 900px white,
+    1400px 500px white,
+    1600px 1000px white,
+    1900px 1800px white;
+
+}
+
+.stars2{
+  position: relative;
+  width: 1px;
+  height: 2px;
+  border-radius: 50%;
+  box-shadow: 15px 15px white,
+    125px 35px white,
+    50px 80px white,
+    10px 120px white,
+    275px 90px white,
+    230px 10px white,
+    120px 130px white,
+    300px 130px white,
+    220px 115px white,
+    330px 200px white,
+    430px 1200px rgb(255, 124, 255),
+    550px 87px white,
+    1400px 1400px white,
+    1400px 1300px white,
+    1500px 300px white;
+  animation: anim-stars 20s linear infinite;
+}
+
+.stars2::after{
+  content: " ";
+  position: absolute;
+  top: 150px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: 15px 15px yellow,
+    185px 845px yellow,
+    350px 580px yellow,
+    810px 920px yellow,
+    775px 790px yellow,
+    1230px 1090px yellow,
+    1220px 630px yellow,
+    1300px 430px yellow,
+    290px 515px yellow;
+    animation: anim-stars 20s linear infinite;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <div class="stars"></div>      
+        <div class="stars2"></div>
+  
+    </div>
+
+</body>
+</html>
