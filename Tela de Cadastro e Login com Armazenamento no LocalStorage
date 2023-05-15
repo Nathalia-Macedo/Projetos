@@ -180,7 +180,7 @@ function login() {
 
   if (loginBemSucedido) {
     alert("Bem-vindo");
-    window.location.href = "http://127.0.0.1:5500/PORTF%C3%93LIO/VisionBet/localstorage/pagina_inicial.html";
+    window.location.href = "#";
   } else {
     alert("Usuário não cadastrado");
   }
